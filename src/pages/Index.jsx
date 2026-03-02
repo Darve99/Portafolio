@@ -12,7 +12,7 @@ function Index() {
   ]
 
   return (
-    <PageLayout title="Enciclopedia del Desarrollador" subtitle="Índice general" page="001">
+    <PageLayout title="Portafolio" subtitle="Índice general" page="001">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -124,7 +124,7 @@ function Index() {
         className="mt-16 text-center text-sm text-sepia font-serif"
       >
         <p>★ ★ ★</p>
-        <p className="mt-2">Enciclopedia del Desarrollador</p>
+        <p className="mt-2">Portafolio</p>
       </motion.div>
     </PageLayout>
   )

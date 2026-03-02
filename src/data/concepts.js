@@ -4,7 +4,7 @@ export const conceptsData = [
     title: 'API REST',
     explanation: 'Una API REST es como un camarero en un restaurante digital. El cliente (frontend) pide algo del menú (hace una petición), y el camarero (API) se comunica con la cocina (backend/base de datos) para traerte exactamente lo que pediste. Usa verbos HTTP como GET para leer, POST para crear, PUT para actualizar y DELETE para eliminar datos.',
     example: 'En mi sistema escolar, cuando un profesor consulta la lista de estudiantes, el frontend hace GET /api/estudiantes. El servidor procesa esto y devuelve un JSON con los datos. Es simple, predecible y cualquier frontend puede consumirlo.',
-    relatedProjects: ['sistema-gestion-escolar']
+    relatedProjects: ['Kaizen']
   },
   {
     id: 'mvc',

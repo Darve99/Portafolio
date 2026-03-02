@@ -38,7 +38,6 @@ export const aboutData = {
   ],
   
   philosophy: [
-    "El código limpio es más importante que el código rápido: la mantenibilidad siempre gana a largo plazo",
     "Cada bug es una oportunidad de aprendizaje, no un fracaso",
     "La mejor documentación es el código autodocumentado, pero los comentarios estratégicos son oro",
     "Siempre hay que pensar en el usuario final: la tecnología debe servir a las personas, no complicarles la vida",
@@ -79,7 +78,7 @@ export const aboutData = {
     },
     {
       label: "Email",
-      url: "mailto:darve99@example.com",
+      url: "mailto:darve99@gmail.com",
       icon: "✉"
     }
   ],

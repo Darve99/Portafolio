@@ -8,6 +8,9 @@ function ProjectDetail() {
   const { id } = useParams()
   const project = projectsData.find(p => p.id === id)
   const [currentImageIdx, setCurrentImageIdx] = useState(0)
+  const [isImageZoomOpen, setIsImageZoomOpen] = useState(false)
+  const [cursorPercent, setCursorPercent] = useState({ x: 50, y: 50 })
+  const [isGalleryHovering, setIsGalleryHovering] = useState(false)
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
 
@@ -228,7 +231,20 @@ function ProjectDetail() {
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                   >
-                    <div className="relative h-96">
+                    <div
+                      className="relative h-96 bg-black/5 dark:bg-black/30 overflow-hidden group"
+                      onMouseEnter={() => setIsGalleryHovering(true)}
+                      onMouseLeave={() => {
+                        setIsGalleryHovering(false)
+                        setCursorPercent({ x: 50, y: 50 })
+                      }}
+                      onMouseMove={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect()
+                        const x = ((e.clientX - rect.left) / rect.width) * 100
+                        const y = ((e.clientY - rect.top) / rect.height) * 100
+                        setCursorPercent({ x, y })
+                      }}
+                    >
                       <motion.img
                         key={currentImageIdx}
                         src={project.images[currentImageIdx].url}
@@ -236,21 +252,28 @@ function ProjectDetail() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain p-2 transition-transform duration-150 ease-out cursor-zoom-in will-change-transform"
+                        style={{
+                          transform: isGalleryHovering
+                            ? `scale(1.9) translate(${(50 - cursorPercent.x) * 0.22}%, ${(50 - cursorPercent.y) * 0.22}%)`
+                            : 'scale(1) translate(0, 0)'
+                        }}
+                        onClick={() => setIsImageZoomOpen(true)}
+                        title="Click para ampliar"
                       />
                       
                       {/* Controles */}
                       {project.images.length > 1 && (
-                        <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 hover:opacity-100 transition-opacity bg-black/20">
+                        <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 pointer-events-none">
                           <button
                             onClick={() => setCurrentImageIdx((prev) => (prev - 1 + project.images.length) % project.images.length)}
-                            className="p-2 bg-sepia/80 text-paper rounded hover:bg-sepia transition-colors"
+                            className="p-2 bg-sepia/80 text-paper rounded hover:bg-sepia transition-colors pointer-events-auto"
                           >
                             ←
                           </button>
                           <button
                             onClick={() => setCurrentImageIdx((prev) => (prev + 1) % project.images.length)}
-                            className="p-2 bg-sepia/80 text-paper rounded hover:bg-sepia transition-colors"
+                            className="p-2 bg-sepia/80 text-paper rounded hover:bg-sepia transition-colors pointer-events-auto"
                           >
                             →
                           </button>
@@ -349,6 +372,34 @@ function ProjectDetail() {
       >
         <p>★ ★ ★</p>
       </motion.div>
+
+      {project.images && project.images.length > 0 && isImageZoomOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-black/90 p-4 md:p-8 flex items-center justify-center"
+          onClick={() => setIsImageZoomOpen(false)}
+        >
+          <button
+            onClick={() => setIsImageZoomOpen(false)}
+            className="absolute top-4 right-4 text-paper bg-black/50 border border-paper/30 px-3 py-1 rounded hover:bg-black/70 transition-colors"
+          >
+            ✕
+          </button>
+
+          <div
+            className="max-w-[95vw] max-h-[90vh] overflow-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={project.images[currentImageIdx].url}
+              alt={project.images[currentImageIdx].title}
+              className="w-auto h-auto max-w-none max-h-none"
+            />
+          </div>
+        </motion.div>
+      )}
     </PageLayout>
   )
 }

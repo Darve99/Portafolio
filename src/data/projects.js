@@ -49,7 +49,7 @@ export const projectsData = [
   {
     id: 'Kaizen',
     title: 'Kaizen - Plataforma de seguimiento de habitos',
-    category: 'academic',
+    category: 'web',
     categoryName: 'proyecto académico',
     status: 'Terminada',
     summary: 'Aplicación fullstack para gestión de hábitos con métricas y recompensas.',
@@ -73,23 +73,23 @@ export const projectsData = [
     images: [
       
       {
-        url: 'https://ibb.co/ZRssGCvh',
+        url: 'https://i.ibb.co/qLGG7whR/login.png',
         title: 'Landing Page/login',
         description: 'Vista inicial del proyecto, diseño y propuesta de valor y flujo de login con validaciones en tiempo real'
       },
       {
-        url: 'https://ibb.co/rGCTrFH7',
+        url: 'https://i.ibb.co/DDxs2zQV/Dashboard.png',
         title: 'Dashboard de Hábitos',
         description: 'Visualización de progreso diario con estadísticas de hábitos'
       },
 
       {
-        url: 'https://ibb.co/FkNjwmjd',
+        url: 'https://i.ibb.co/7x86Wj60/Seguimiento-subtareas.png',
         title: 'seguimiento de Subtareas',
         description: 'Gestión detallada de hábitos con subtareas y graficos de progresos'
       },
       {
-        url: 'https://via.placeholder.com/600x400?text=Logros+Gamificacion',
+        url: 'https://i.ibb.co/DD1hZxLj/Captura-de-pantalla-2026-03-02-181823.png',
         title: 'Sistema de Logros',
         description: '6 logros desbloqueables con sistema XP y niveles'
       }
