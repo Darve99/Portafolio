@@ -1,6 +1,8 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 export const aboutData = {
   portrait: {
-    src: "/Portafolio/portrait.jpg",
+    src: `${BASE_URL}portrait.jpg`,
     alt: "Retrato de David Alejandro Roa Velasquez",
     caption: "Ingeniero de Sistemas"
   },
