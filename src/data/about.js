@@ -1,6 +1,6 @@
 export const aboutData = {
   portrait: {
-    src: "/portrait.jpg",
+    src: "/Portafolio/portrait.jpg",
     alt: "Retrato de David Alejandro Roa Velasquez",
     caption: "Ingeniero de Sistemas"
   },
