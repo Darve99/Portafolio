@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink font-sans transition-colors duration-500 dark:bg-ink-dark dark:text-paper;
+  }
+
+  ::selection {
+    @apply bg-sepia/30 text-ink dark:bg-sepia-dark/40 dark:text-paper;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10;
+  }
+
+  .page-sheet {
+    @apply relative mx-auto w-full max-w-5xl rounded-sm border border-sepia-light bg-paper/95 px-6 py-8 shadow-[0_12px_40px_rgba(0,0,0,0.12)] dark:border-sepia/40 dark:bg-paper-dark/80 dark:shadow-[0_18px_50px_rgba(0,0,0,0.4)];
+  }
+
+  .page-sheet::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 rounded-sm;
+    background: linear-gradient(90deg, rgba(112,66,20,0.08) 0%, transparent 14%, transparent 86%, rgba(112,66,20,0.08) 100%);
+  }
+
+  .page-sheet::after {
+    content: '';
+    @apply pointer-events-none absolute inset-0 rounded-sm;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.08), transparent 55%);
+  }
+
+  .page-head {
+    @apply mb-8 text-center;
+  }
+
+  .running-head {
+    @apply flex flex-col items-center gap-1 font-serif text-xs uppercase tracking-[0.25em] text-sepia dark:text-sepia-light;
+  }
+
+  .running-head__title {
+    @apply text-[0.65rem] md:text-xs;
+  }
+
+  .running-head__subtitle {
+    @apply text-[0.6rem] md:text-[0.7rem] text-sepia/80 dark:text-sepia-light/80;
+  }
+
+  .ornament {
+    @apply mt-3 text-xs tracking-[0.4em] text-sepia/70 dark:text-sepia-light/70;
+  }
+
+  .page-body {
+    @apply px-1 sm:px-4;
+  }
+
+  .page-foot {
+    @apply mt-10 flex flex-col items-center gap-2;
+  }
+
+  .folio {
+    @apply font-serif text-xs tracking-[0.3em] text-sepia dark:text-sepia-light;
+  }
+  
+  .encyclopedia-title {
+    @apply font-serif text-4xl md:text-6xl font-bold text-center mb-4 text-ink dark:text-paper;
+  }
+  
+  .encyclopedia-subtitle {
+    @apply font-serif text-xl md:text-2xl text-center text-sepia mb-8 dark:text-sepia-light;
+  }
+  
+  .page-decoration {
+    @apply border-t-2 border-b-2 border-sepia-light py-2 text-center text-sm font-serif tracking-widest text-sepia dark:border-sepia/40 dark:text-sepia-light;
+  }
+  
+  .article-section {
+    @apply mb-8;
+  }
+  
+  .article-heading {
+    @apply font-serif text-2xl font-bold mb-3 text-blue-ink border-b border-sepia-light pb-2 dark:text-blue-ink-light dark:border-sepia/40;
+  }
+  
+  .article-subheading {
+    @apply font-serif text-xl font-semibold mb-2 text-sepia dark:text-sepia-light;
+  }
+  
+  .article-text {
+      @apply font-sans text-base leading-relaxed text-ink/90 dark:text-paper/90;
+  }
+}
